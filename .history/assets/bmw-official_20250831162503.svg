@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Outer blue circle -->
+  <circle cx="50" cy="50" r="48" fill="#0066b1" stroke="#004d8c" stroke-width="2"/>
+  
+  <!-- White middle circle -->
+  <circle cx="50" cy="50" r="38" fill="#ffffff"/>
+  
+  <!-- Inner blue circle -->
+  <circle cx="50" cy="50" r="28" fill="#0066b1"/>
+  
+  <!-- BMW text -->
+  <text x="50" y="58" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="16" font-weight="bold">BMW</text>
+  
+  <!-- BMW roundel segments (representing the propeller) -->
+  <path d="M50 2 L50 18 M50 82 L50 98 M2 50 L18 50 M82 50 L98 50" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+</svg>

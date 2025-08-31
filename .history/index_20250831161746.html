@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometric Figures with Animation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            cursor: none;
+            overflow: hidden;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .custom-cursor {
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border: 2px solid #fff;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+        }
+
+        .custom-cursor.hover {
+            transform: scale(1.5);
+            background: rgba(255, 255, 255, 1);
+        }
+
+        .title {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: titleFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes titleFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .buttons-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            max-width: 800px;
+            width: 100%;
+            padding: 0 2rem;
+        }
+
+        .btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 1rem 1.5rem;
+            font-size: 1.1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 123, 255, 0.4);
+            background: #0056b3;
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .figure-display {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .figure {
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+        }
+
+        .square {
+            border-radius: 0;
+        }
+
+        .rectangle {
+            width: 150px;
+            height: 80px;
+            border-radius: 0;
+        }
+
+        .circle {
+            border-radius: 50%;
+        }
+
+        .triangle {
+            width: 0;
+            height: 0;
+            background: transparent;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 86px solid rgba(255, 255, 255, 0.2);
+            border-top: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .triangle::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: -30px;
+            width: 60px;
+            height: 40px;
+            background: transparent;
+            border-left: 30px solid transparent;
+            border-right: 30px solid transparent;
+            border-bottom: 52px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="custom-cursor"></div>
+    
+    <h1 class="title">Geometric Figures</h1>
+    
+    <div class="buttons-container">
+        <button class="btn" data-figure="square">Square</button>
+        <button class="btn" data-figure="rectangle">Rectangle</button>
+        <button class="btn" data-figure="circle">Circle</button>
+        <button class="btn" data-figure="triangle">Triangle</button>
+        <button class="btn" data-figure="oval">Oval</button>
+        <button class="btn" data-figure="diamond">Diamond</button>
+    </div>
+
+    <div class="figure-display">
+        <div class="figure square">Square</div>
+    </div>
+
+    <script>
+        // Custom cursor
+        const cursor = document.querySelector('.custom-cursor');
+        
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        // Add hover effect to buttons
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('mouseenter', () => {
+                cursor.classList.add('hover');
+            });
+            
+            btn.addEventListener('mouseleave', () => {
+                cursor.classList.remove('hover');
+            });
+        });
+
+        // Figure display functionality
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const figureType = btn.getAttribute('data-figure');
+                const figureDisplay = document.querySelector('.figure-display');
+                
+                let figureHTML = '';
+                
+                switch(figureType) {
+                    case 'square':
+                        figureHTML = '<div class="figure square">Square</div>';
+                        break;
+                    case 'rectangle':
+                        figureHTML = '<div class="figure rectangle">Rectangle</div>';
+                        break;
+                    case 'circle':
+                        figureHTML = '<div class="figure circle">Circle</div>';
+                        break;
+                    case 'triangle':
+                        figureHTML = '<div class="figure triangle">Triangle</div>';
+                        break;
+                    case 'oval':
+                        figureHTML = '<div class="figure circle" style="width: 150px; height: 80px;">Oval</div>';
+                        break;
+                    case 'diamond':
+                        figureHTML = '<div class="figure" style="transform: rotate(45deg); width: 100px; height: 100px;">Diamond</div>';
+                        break;
+                }
+                
+                figureDisplay.innerHTML = figureHTML;
+                
+                // Add click animation
+                btn.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    btn.style.transform = '';
+                }, 150);
+            });
+        });
+
+        // Hide default cursor on interactive elements
+        document.querySelectorAll('button, a, input, textarea').forEach(el => {
+            el.style.cursor = 'none';
+        });
+    </script>
+</body>
+</html>

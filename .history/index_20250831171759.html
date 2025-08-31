@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Cars - Premium Automotive Showcase</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Playfair Display', 'Times New Roman', serif;
+            background: linear-gradient(-45deg, #000000, #1a1a1a, #2d1b0e, #000000);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Luxury Logo */
+        .luxury-logo {
+            width: 80px;
+            height: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            position: relative;
+        }
+
+        .logo-emblem {
+            width: 60px;
+            height: 60px;
+            position: relative;
+            margin-bottom: 8px;
+        }
+
+        .laurel-wreath {
+            width: 100%;
+            height: 100%;
+            border: 2px solid #d4af37;
+            border-radius: 50%;
+            position: relative;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.8);
+        }
+
+        .laurel-wreath::before,
+        .laurel-wreath::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 20px;
+            border: 2px solid #d4af37;
+            border-radius: 50px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .laurel-wreath::before {
+            left: -5px;
+            border-right: none;
+            border-top: none;
+        }
+
+        .laurel-wreath::after {
+            right: -5px;
+            border-left: none;
+            border-bottom: none;
+        }
+
+        .logo-letter {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 28px;
+            font-weight: bold;
+            color: #d4af37;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.8);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .logo-text-container {
+            text-align: center;
+        }
+
+        .logo-luxury {
+            font-size: 12px;
+            font-weight: bold;
+            color: #d4af37;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
+            letter-spacing: 1px;
+            margin-bottom: 2px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .logo-brand {
+            font-size: 8px;
+            font-weight: bold;
+            color: #d4af37;
+            text-shadow: 0 0 8px rgba(212, 175, 55, 0.8);
+            letter-spacing: 0.5px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .luxury-logo:hover .laurel-wreath {
+            box-shadow: 0 0 30px rgba(212, 175, 55, 1), 0 0 40px rgba(212, 175, 55, 0.6);
+        }
+
+        .luxury-logo:hover .logo-letter,
+        .luxury-logo:hover .logo-luxury,
+        .luxury-logo:hover .logo-brand {
+            text-shadow: 0 0 20px rgba(212, 175, 55, 1);
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 2px solid #d4af37;
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-text {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #fff, #d4af37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-left: 20px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #d4af37;
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Main Container */
+        .main-container {
+            margin-top: 100px;
+            min-height: calc(100vh - 100px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(45, 27, 14, 0.8));
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="%23d4af37" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #fff, #d4af37, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+            animation: titleGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes titleGlow {
+            0%, 100% { text-shadow: 0 0 30px rgba(212, 175, 55, 0.5); }
+            50% { text-shadow: 0 0 50px rgba(212, 175, 55, 0.8), 0 0 70px rgba(212, 175, 55, 0.4); }
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: #ccc;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Brand Selection */
+        .brands-section {
+            padding: 5rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 4rem;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .brands-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .brand-card {
+            background: linear-gradient(145deg, rgba(26, 26, 26, 0.9), rgba(15, 15, 15, 0.9));
+            border-radius: 25px;
+            padding: 2.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .brand-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .brand-card:hover::before {
+            left: 100%;
+        }
+
+        .brand-card:hover {
+            transform: translateY(-15px);
+            border-color: #d4af37;
+            box-shadow: 0 25px 50px rgba(212, 175, 55, 0.2);
+        }
+
+        .brand-logo {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: #fff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .brand-logo img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+        }
+
+        .brand-card:hover .brand-logo {
+            transform: scale(1.1);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3);
+        }
+
+        .brand-name {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #fff;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .brand-description {
+            color: #ccc;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        /* Others Section */
+        .others-section {
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .others-card {
+            background: linear-gradient(145deg, rgba(26, 26, 26, 0.9), rgba(15, 15, 15, 0.9));
+            border-radius: 25px;
+            padding: 3rem;
+            border: 2px solid #d4af37;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .others-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3);
+        }
+
+        .others-logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, #d4af37, #b8941f);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #000;
+            animation: logoGlow 3s ease-in-out infinite;
+        }
+
+        .others-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #d4af37;
+        }
+
+        .others-description {
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        /* Model Gallery */
+        .models-section {
+            padding: 5rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: none;
+        }
+
+        .back-btn {
+            background: linear-gradient(135deg, #d4af37, #b8941f);
+            color: #000;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-bottom: 3rem;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
+        }
+
+        .models-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .model-card {
+            background: linear-gradient(145deg, rgba(26, 26, 26, 0.9), rgba(15, 15, 15, 0.9));
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        .model-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text x="50" y="50" text-anchor="middle" fill="%23d4af37" opacity="0.1" font-size="60">L</text></svg>') center/contain no-repeat;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .model-card:hover::before {
+            opacity: 1;
+        }
+
+        .model-card:hover {
+            transform: translateY(-10px);
+            border-color: #d4af37;
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+        }
+
+        .model-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(45deg, #007bff, #0056b3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .model-card:hover .model-image {
+            transform: scale(1.05);
+        }
+
+        .model-info {
+            padding: 2rem;
+        }
+
+        .model-name {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+
+        .model-price {
+            color: #d4af37;
+            font-weight: bold;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .model-year {
+            color: #ccc;
+            font-size: 1rem;
+        }
+
+        /* Car Detail View */
+        .car-detail {
+            padding: 5rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: none;
+        }
+
+        .car-detail-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .car-image-container {
+            position: relative;
+        }
+
+        .car-main-image {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(45deg, #007bff, #0056b3);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: white;
+            margin-bottom: 2rem;
+            border: 2px solid #d4af37;
+        }
+
+        .interior-btn {
+            background: linear-gradient(135deg, #d4af37, #b8941f);
+            color: #000;
+            border: none;
+            padding: 1.2rem 2.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .interior-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        .car-info {
+            background: linear-gradient(145deg, rgba(26, 26, 26, 0.9), rgba(15, 15, 15, 0.9));
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 2px solid #d4af37;
+            backdrop-filter: blur(10px);
+        }
+
+        .car-specs {
+            margin-bottom: 2rem;
+        }
+
+        .spec-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid #333;
+        }
+
+        .spec-item:last-child {
+            border-bottom: none;
+        }
+
+        .spec-label {
+            color: #ccc;
+            font-size: 1.1rem;
+        }
+
+        .spec-value {
+            color: #d4af37;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* About Page */
+        .about-section {
+            padding: 8rem 2rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            display: none;
+        }
+
+        .about-content {
+            background: linear-gradient(145deg, rgba(26, 26, 26, 0.9), rgba(15, 15, 15, 0.9));
+            padding: 4rem;
+            border-radius: 25px;
+            border: 2px solid #d4af37;
+            backdrop-filter: blur(10px);
+        }
+
+        .author-name {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #fff, #d4af37, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+            animation: titleGlow 3s ease-in-out infinite;
+        }
+
+        .author-title {
+            font-size: 1.5rem;
+            color: #d4af37;
+            margin-bottom: 3rem;
+            font-style: italic;
+        }
+
+        .contact-info {
+            text-align: left;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: #d4af37;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+            color: #000;
+        }
+
+        .contact-text {
+            color: #fff;
+            font-size: 1.1rem;
+        }
+
+        /* Interior View Modal */
+        .interior-view {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .interior-content {
+            background: linear-gradient(145deg, rgba(26, 26, 26, 0.95), rgba(15, 15, 15, 0.95));
+            padding: 3rem;
+            border-radius: 25px;
+            max-width: 90%;
+            max-height: 90%;
+            overflow: auto;
+            position: relative;
+            border: 2px solid #d4af37;
+            backdrop-filter: blur(20px);
+        }
+
+        .close-interior {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #ff4444;
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .close-interior:hover {
+            background: #cc0000;
+            transform: scale(1.1);
+        }
+
+        .interior-image {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(45deg, #28a745, #20c997);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            border: 2px solid #d4af37;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .brands-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .car-detail-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .author-name {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 0.6s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .slide-in {
+            animation: slideIn 0.6s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo-section">
+                <div class="luxury-logo">
+                    <div class="logo-emblem">
+                        <div class="laurel-wreath"></div>
+                        <div class="logo-letter">L</div>
+                    </div>
+                    <div class="logo-text-container">
+                        <div class="logo-luxury">LUXURY</div>
+                        <div class="logo-brand">BRAND</div>
+                    </div>
+                </div>
+                <div class="logo-text">Luxury Cars</div>
+            </div>
+            <div class="nav-links">
+                <a href="#" onclick="showHome()">Home</a>
+                <a href="#" onclick="showAbout()">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Discover Luxury</h1>
+                <p>Experience the pinnacle of automotive excellence with the world's most prestigious brands. From timeless elegance to cutting-edge innovation, explore the finest vehicles that define luxury.</p>
+            </div>
+        </section>
+
+        <!-- Brand Selection -->
+        <section id="brands" class="brands-section">
+            <h2 class="section-title">Premium Automotive Brands</h2>
+            <div class="brands-grid">
+                <div class="brand-card" data-brand="bmw">
+                    <div class="brand-logo bmw">
+                        <img src="assets/bmw-official.svg" alt="BMW Official Logo" />
+                    </div>
+                    <h3 class="brand-name">BMW</h3>
+                    <p class="brand-description">The Ultimate Driving Machine. Experience luxury, performance, and innovation in every detail.</p>
+                </div>
+                <div class="brand-card" data-brand="mercedes">
+                    <div class="brand-logo mercedes">
+                        <img src="assets/mercedes-official.svg" alt="Mercedes-Benz Official Logo" />
+                    </div>
+                    <h3 class="brand-name">Mercedes-Benz</h3>
+                    <p class="brand-description">The Best or Nothing. Unparalleled luxury and cutting-edge technology define our legacy.</p>
+                </div>
+                <div class="brand-card" data-brand="porsche">
+                    <div class="brand-logo porsche">
+                        <img src="assets/porsche-official.svg" alt="Porsche Official Logo" />
+                    </div>
+                    <h3 class="brand-name">Porsche</h3>
+                    <p class="brand-description">There is no substitute. Pure driving pleasure and engineering excellence in every model.</p>
+                </div>
+            </div>
+
+            <!-- Others Section -->
+            <div class="others-section">
+                <div class="others-card" onclick="showOthers()">
+                    <div class="others-logo">+</div>
+                    <h3 class="others-title">Discover More</h3>
+                    <p class="others-description">Explore additional premium brands including Audi, Rolls-Royce, Ferrari, and more exclusive automotive manufacturers.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Model Gallery -->
+        <section class="models-section" id="models">
+            <button class="back-btn" onclick="showHome()">← Back to Brands</button>
+            <h2 class="section-title" id="models-title">BMW Models</h2>
+            <div class="models-grid" id="models-grid">
+                <!-- Models will be populated here -->
+            </div>
+        </section>
+
+        <!-- Car Detail View -->
+        <section class="car-detail" id="car-detail">
+            <button class="back-btn" onclick="showModelsFromDetail()">← Back to Models</button>
+            <div class="car-detail-content">
+                <div class="car-image-container">
+                    <div class="car-main-image" id="car-main-image">🚗</div>
+                    <button class="interior-btn" onclick="showInterior()">View Interior</button>
+                </div>
+                <div class="car-info">
+                    <h2 id="car-name">Car Name</h2>
+                    <div class="car-specs" id="car-specs">
+                        <!-- Car specifications will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Page -->
+        <section class="about-section" id="about">
+            <div class="about-content">
+                <h1 class="author-name">Qilichov Damirjon</h1>
+                <p class="author-title">"Luxury Brand Author"</p>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div class="contact-text">Instagram: @dammirrxs</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">✈️</div>
+                        <div class="contact-text">Telegram: @dammirrxs</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-text">Phone: +998 90 030 30 03</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Interior View Modal -->
+    <div class="interior-view" id="interior-view">
+        <div class="interior-content">
+            <button class="close-interior" onclick="closeInterior()">×</button>
+            <h3>Car Interior</h3>
+            <div class="interior-image" id="interior-image">🪑</div>
+        </div>
+    </div>
+
+    <script>
+        // Car data with enhanced information and actual image paths
+        const carData = {
+            bmw: {
+                name: "BMW",
+                models: [
+                    {
+                        name: "BMW 3 Series",
+                        price: "$42,000",
+                        year: "2024",
+                        engine: "2.0L Turbo",
+                        power: "255 HP",
+                        transmission: "8-Speed Automatic",
+                        interior: "🪑",
+                        design: "Sporty and elegant design with signature BMW kidney grille",
+                        performance: "0-60 mph in 5.6 seconds",
+                        image: "img/Say Hello To The 2023 BMW 3 Series.jpeg"
+                    },
+                    {
+                        name: "BMW M5 Competition",
+                        price: "$73,000",
+                        year: "2024",
+                        engine: "4.4L Twin-Turbo V8",
+                        power: "617 HP",
+                        transmission: "8-Speed M Steptronic",
+                        interior: "🪑",
+                        design: "High-performance sports sedan with aggressive styling",
+                        performance: "0-60 mph in 3.1 seconds",
+                        image: "img/M5 COMPETITION Ахмеда.jpeg"
+                    },
+                    {
+                        name: "BMW M5 CS",
+                        price: "$142,995",
+                        year: "2024",
+                        engine: "4.4L Twin-Turbo V8",
+                        power: "627 HP",
+                        transmission: "8-Speed M Steptronic",
+                        interior: "🪑",
+                        design: "Ultimate M5 with carbon fiber and exclusive styling",
+                        performance: "0-60 mph in 2.9 seconds",
+                        image: "img/Super nice Frozen Ruby Red M5 CS__ Credit @majorkalosangeles & @armaan_f90 __#bmw #bmwm5 #bmwf90 #m5 #m5e39_#e39 #f90 #m5cs #m5f90 #m5competition _#mpower #bmwm #carlovers #bmwlove #bimmer #bimmerlife #bimmergang #carenthusiastgc.jpeg"
+                    }
+                ]
+            },
+            mercedes: {
+                name: "Mercedes-Benz",
+                models: [
+                    {
+                        name: "Mercedes-AMG GT",
+                        price: "$89,900",
+                        year: "2024",
+                        engine: "4.0L Biturbo V8",
+                        power: "469 HP",
+                        transmission: "7-Speed DCT",
+                        interior: "🪑",
+                        design: "High-performance sports car with aggressive styling",
+                        performance: "0-60 mph in 3.2 seconds",
+                        image: "img/AMG.jpeg"
+                    },
+                    {
+                        name: "Mercedes-AMG GT Black Series",
+                        price: "$325,000",
+                        year: "2024",
+                        engine: "4.0L Biturbo V8",
+                        power: "720 HP",
+                        transmission: "7-Speed DCT",
+                        interior: "🪑",
+                        design: "Track-focused AMG with extreme aerodynamics",
+                        performance: "0-60 mph in 3.2 seconds",
+                        image: "img/Mercedes-AMG GT Black Series.jpeg"
+                    },
+                    {
+                        name: "Mercedes-Benz GLE",
+                        price: "$58,900",
+                        year: "2024",
+                        engine: "2.0L Turbo",
+                        power: "255 HP",
+                        transmission: "9-Speed Automatic",
+                        interior: "🪑",
+                        design: "Luxury SUV with commanding presence",
+                        performance: "0-60 mph in 6.1 seconds",
+                        image: "img/Mercedes-Benz GLE❤❤.jpeg"
+                    },
+                    {
+                        name: "Mercedes-AMG 63S",
+                        price: "$125,000",
+                        year: "2024",
+                        engine: "4.0L Biturbo V8",
+                        power: "603 HP",
+                        transmission: "9-Speed MCT",
+                        interior: "🪑",
+                        design: "High-performance luxury with AMG excellence",
+                        performance: "0-60 mph in 3.7 seconds",
+                        image: "img/63S.jpeg"
+                    }
+                ]
+            },
+            porsche: {
+                name: "Porsche",
+                models: [
+                    {
+                        name: "Porsche 911",
+                        price: "$106,100",
+                        year: "2024",
+                        engine: "3.0L Turbo",
+                        power: "379 HP",
+                        transmission: "8-Speed PDK",
+                        interior: "🪑",
+                        design: "Iconic sports car with timeless design",
+                        performance: "0-60 mph in 3.4 seconds",
+                        image: "img/Porsche.jpeg"
+                    },
+                    {
+                        name: "Porsche Cayman",
+                        price: "$62,400",
+                        year: "2024",
+                        engine: "2.0L Turbo",
+                        power: "300 HP",
+                        transmission: "6-Speed Manual",
+                        interior: "🪑",
+                        design: "Mid-engine sports car with perfect balance",
+                        performance: "0-60 mph in 4.9 seconds",
+                        image: "img/Porsche 😍 #IdreamCar #PorscheCayman #porsche911 #PorscheCayman #PorscheMoment #porschegwspeedweek.jpeg"
+                    }
+                ]
+            }
+        };
+
+        let currentBrand = '';
+        let currentModel = null;
+
+        // Event listeners for brand cards
+        document.querySelectorAll('.brand-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const brand = card.getAttribute('data-brand');
+                showModels(brand);
+            });
+        });
+
+        // Show models for selected brand
+        function showModels(brand) {
+            currentBrand = brand;
+            const brandData = carData[brand];
+            
+            document.getElementById('models-title').textContent = `${brandData.name} Models`;
+            
+            const modelsGrid = document.getElementById('models-grid');
+            modelsGrid.innerHTML = '';
+            
+            brandData.models.forEach((model, index) => {
+                const modelCard = document.createElement('div');
+                modelCard.className = 'model-card fade-in';
+                modelCard.style.animationDelay = `${index * 0.1}s`;
+                
+                modelCard.innerHTML = `
+                    <div class="model-image">
+                        <img src="${model.image}" alt="${model.name}" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="model-info">
+                        <h3 class="model-name">${model.name}</h3>
+                        <p class="model-price">${model.price}</p>
+                        <p class="model-year">${model.year}</p>
+                    </div>
+                `;
+                
+                modelCard.addEventListener('click', () => {
+                    showCarDetail(model);
+                });
+                
+                modelsGrid.appendChild(modelCard);
+            });
+            
+            document.getElementById('brands').style.display = 'none';
+            document.getElementById('models').style.display = 'block';
+            document.getElementById('car-detail').style.display = 'none';
+            document.getElementById('about').style.display = 'none';
+        }
+
+        // Show car detail view
+        function showCarDetail(model) {
+            currentModel = model;
+            
+            document.getElementById('car-name').textContent = model.name;
+            document.getElementById('car-main-image').innerHTML = `<img src="${model.image}" alt="${model.name}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">`;
+            document.getElementById('interior-image').textContent = model.interior;
+            
+            const specs = document.getElementById('car-specs');
+            specs.innerHTML = `
+                <div class="spec-item">
+                    <span class="spec-label">Price:</span>
+                    <span class="spec-value">${model.price}</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Year:</span>
+                    <span class="spec-value">${model.year}</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Engine:</span>
+                    <span class="spec-value">${model.engine}</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Power:</span>
+                    <span class="spec-value">${model.power}</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Transmission:</span>
+                    <span class="spec-value">${model.transmission}</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Design:</span>
+                    <span class="spec-value">${model.design}</span>
+                    </span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Performance:</span>
+                    <span class="spec-value">${model.performance}</span>
+                </div>
+            `;
+            
+            document.getElementById('models').style.display = 'none';
+            document.getElementById('car-detail').style.display = 'block';
+        }
+
+        // Show home page (brands section)
+        function showHome() {
+            document.getElementById('brands').style.display = 'block';
+            document.getElementById('models').style.display = 'none';
+            document.getElementById('car-detail').style.display = 'none';
+            document.getElementById('about').style.display = 'none';
+        }
+
+        // Show models for current brand (go back to models from car detail)
+        function showModelsFromDetail() {
+            if (currentBrand) {
+                showModels(currentBrand);
+            } else {
+                showHome();
+            }
+        }
+
+        // Show car detail view
+        function showCarDetail(model) {
+            currentModel = model;
+            
+            document.getElementById('car-name').textContent = model.name;
+            document.getElementById('car-main-image').innerHTML = `<img src="${model.image}" alt="${model.name}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">`;
+            document.getElementById('interior-image').textContent = model.interior;
+            
+            const specs = document.getElementById('car-specs');
+            specs.innerHTML = `
+                <div class="spec-item">
+                    <span class="spec-label">Price:</span>
+                    <span class="spec-value">${model.price}</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Year:</span>
+                    <span class="spec-value">${model.year}</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Engine:</span>
+                    <span class="spec-value">${model.engine}</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Power:</span>
+                    <span class="spec-value">${model.power}</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Transmission:</span>
+                    <span class="spec-value">${model.transmission}</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Design:</span>
+                    <span class="spec-value">${model.design}</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Performance:</span>
+                    <span class="spec-value">${model.performance}</span>
+                </div>
+            `;
+            
+            document.getElementById('models').style.display = 'none';
+            document.getElementById('car-detail').style.display = 'block';
+        }
+
+        // Show home page
+        function showHome() {
+            document.getElementById('brands').style.display = 'block';
+            document.getElementById('models').style.display = 'none';
+            document.getElementById('car-detail').style.display = 'none';
+            document.getElementById('about').style.display = 'none';
+        }
+
+        // Show about page
+        function showAbout() {
+            document.getElementById('brands').style.display = 'none';
+            document.getElementById('models').style.display = 'none';
+            document.getElementById('car-detail').style.display = 'none';
+            document.getElementById('about').style.display = 'block';
+        }
+
+        // Show others section
+        function showOthers() {
+            alert('Coming Soon! Additional premium brands including Audi, Rolls-Royce, Ferrari, and more will be available.');
+        }
+
+        // Show interior view
+        function showInterior() {
+            document.getElementById('interior-view').style.display = 'flex';
+        }
+
+        // Close interior view
+        function closeInterior() {
+            document.getElementById('interior-view').style.display = 'none';
+        }
+
+        // Close interior view when clicking outside
+        document.getElementById('interior-view').addEventListener('click', (e) => {
+            if (e.target.id === 'interior-view') {
+                closeInterior();
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(0, 0, 0, 0.98)';
+            } else {
+                navbar.style.background = 'rgba(0, 0, 0, 0.95)';
+            }
+        });
+    </script>
+</body>
+</html>

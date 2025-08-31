@@ -1,0 +1,50 @@
+.h3 {
+    font-family: Gilroy;
+    font-weight: 600;
+    font-style: Semibold;
+    font-size: 20px;
+}
+
+
+.p {
+    font-family: Gilroy;
+    font-weight: 600;
+    font-style: Semibold;
+    font-size: 14px;
+}
+
+
+.first_time {
+    font-family: Gilroy;
+    font-weight: 600;
+    font-style: Semibold;
+    font-size: 14px;
+}
+
+.secound_time {
+    font-family: Gilroy;
+    font-weight: 600;
+    font-style: Semibold;
+    font-size: 14px;
+}
+
+.time {
+    display: flex;
+    gap: 10px;
+}
+
+.paragrph {
+    color: red;
+    font-family: Gilroy;
+    font-weight: 600;
+    font-style: Semibold;
+    font-size: 14px;
+}
+
+
+.box{
+    width: 350px;
+    border-radius: 4px;
+    background-color: #818080;
+    padding: 30px;
+}
