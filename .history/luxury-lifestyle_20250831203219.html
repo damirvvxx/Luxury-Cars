@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Lifestyle - Premium Cars, Watches & Newsletter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Main Navigation */
+        .main-navbar {
+            background: rgba(0, 0, 0, 0.98);
+            backdrop-filter: blur(20px);
+            border-bottom: 2px solid #d4af37;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .luxury-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .logo-emblem {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #d4af37 0%, #ffd700 30%, #fff 50%, #ffd700 70%, #d4af37 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 28px;
+            color: #000;
+            border: 3px solid #d4af37;
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.8);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-emblem::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .logo-emblem:hover::before {
+            left: 100%;
+        }
+
+        .logo-text-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-luxury {
+            font-size: 16px;
+            font-weight: 700;
+            color: #d4af37;
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        .logo-brand {
+            font-size: 14px;
+            font-weight: 500;
+            color: #888;
+            letter-spacing: 2px;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-left: 1rem;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .nav-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            padding: 0.8rem 1.5rem;
+            border-radius: 12px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .nav-link:hover::before {
+            left: 100%;
+        }
+
+        .nav-link:hover {
+            color: #d4af37;
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #d4af37, #ffd700);
+            transition: all 0.4s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 80%;
+        }
+
+        .nav-link.active {
+            color: #d4af37;
+            background: rgba(212, 175, 55, 0.15);
+        }
+
+        /* Main Container */
+        .main-container {
+            margin-top: 120px;
+            padding: 2rem;
+            min-height: calc(100vh - 120px);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 6rem 0;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%);
+            border-radius: 30px;
+            margin-bottom: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="%23d4af37" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #d4af37 0%, #ffd700 50%, #d4af37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+            animation: titleGlow 3s ease-in-out infinite alternate;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            color: #ccc;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* Luxury Sections */
+        .luxury-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 3rem 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .luxury-section.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 4rem;
+            color: #d4af37;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+
+        /* Cars Grid */
+        .cars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .car-card {
+            background: linear-gradient(145deg, rgba(26, 26, 26, 0.95), rgba(15, 15, 15, 0.95));
+            border-radius: 25px;
+            overflow: hidden;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        .car-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+            transition: left 0.8s ease;
+        }
+
+        .car-card:hover::before {
+            left: 100%;
+        }
+
+        .car-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            border-color: #d4af37;
+            box-shadow: 0 25px 50px rgba(212, 175, 55, 0.4);
+        }
+
+        .car-image {
+            height: 280px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .car-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .car-card:hover .car-image img {
+            transform: scale(1.15);
+        }
+
+        .car-info {
+            padding: 2.5rem;
+        }
+
+        .car-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .car-info p {
+            color: #ccc;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .view-details-btn {
+            background: linear-gradient(135deg, #d4af37 0%, #ffd700 100%);
+            color: #000;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .view-details-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .view-details-btn:hover::before {
+            left: 100%;
+        }
+
+        .view-details-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.5);
+        }
+
+        /* Watches Grid */
+        .watches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+        }
+
+        .watch-card {
+            background: linear-gradient(145deg, rgba(26, 26, 26, 0.95), rgba(15, 15, 15, 0.95));
+            border-radius: 25px;
+            overflow: hidden;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(10px);
+        }
+
+        .watch-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            border-color: #d4af37;
+            box-shadow: 0 25px 50px rgba(212, 175, 55, 0.4);
+        }
+
+        .watch-image {
+            height: 280px;
+            overflow: hidden;
+        }
+
+        .watch-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .watch-card:hover .watch-image img {
+            transform: scale(1.15);
+        }
+
+        .watch-info {
+            padding: 2.5rem;
+        }
+
+        .watch-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .watch-price {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #d4af37;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        .watch-info p {
+            color: #ccc;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .more-info-btn {
+            background: linear-gradient(135deg, #d4af37 0%, #ffd700 100%);
+            color: #000;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .more-info-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.5);
+        }
+
+        /* Newsletter Section */
+        .newsletter-content {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            background: linear-gradient(145deg, rgba(26, 26, 26, 0.95), rgba(15, 15, 15, 0.95));
+            border-radius: 30px;
+            padding: 4rem;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newsletter-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.05), transparent);
+            transition: left 0.8s ease;
+        }
+
+        .newsletter-content:hover::before {
+            left: 100%;
+        }
+
+        .newsletter-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #d4af37;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+
+        .newsletter-subtitle {
+            font-size: 1.2rem;
+            color: #ccc;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .form-group {
+            text-align: left;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1.2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 12px;
+            color: #ffffff;
+            font-size: 1rem;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #d4af37;
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .form-input::placeholder {
+            color: #888;
+        }
+
+        .subscribe-btn {
+            background: linear-gradient(135deg, #d4af37 0%, #ffd700 100%);
+            color: #000;
+            border: none;
+            padding: 1.2rem 2.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            margin-top: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .subscribe-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .subscribe-btn:hover::before {
+            left: 100%;
+        }
+
+        .subscribe-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.5);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-content {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .nav-link {
+                padding: 0.6rem 1rem;
+                font-size: 14px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .cars-grid,
+            .watches-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .newsletter-content {
+                padding: 2.5rem;
+            }
+
+            .newsletter-title {
+                font-size: 2.2rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes titleGlow {
+            0% {
+                text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+            }
+            100% {
+                text-shadow: 0 0 50px rgba(212, 175, 55, 0.8), 0 0 70px rgba(212, 175, 55, 0.4);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .luxury-section {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        /* Loading Animation */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 3px solid rgba(212, 175, 55, 0.3);
+            border-top: 3px solid #d4af37;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading" id="loading">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="main-navbar">
+        <div class="nav-content">
+            <div class="logo-section">
+                <div class="luxury-logo">
+                    <div class="logo-emblem">L</div>
+                    <div class="logo-text-container">
+                        <div class="logo-luxury">LUXURY</div>
+                        <div class="logo-brand">LIFESTYLE</div>
+                    </div>
+                </div>
+                <div class="logo-text">Luxury Lifestyle</div>
+            </div>
+            <div class="nav-links">
+                <a href="#" onclick="showLuxuryCars()" class="nav-link active">Luxury Cars</a>
+                <a href="#" onclick="showLuxuryWatches()" class="nav-link">Luxury Watches</a>
+                <a href="#" onclick="showLuxuryNewsletter()" class="nav-link">Luxury Newsletter</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Welcome to Luxury Lifestyle</h1>
+                <p>Discover the finest collection of luxury cars, premium timepieces, and exclusive lifestyle content. Experience elegance, sophistication, and the art of living well.</p>
+            </div>
+        </section>
+
+        <!-- Luxury Cars Section -->
+        <section id="luxury-cars" class="luxury-section active">
+            <h2 class="section-title">Luxury Cars</h2>
+            <div class="cars-grid">
+                <div class="car-card">
+                    <div class="car-image">
+                        <img src="img/BMW_logo.png" alt="BMW M5 Competition" />
+                    </div>
+                    <div class="car-info">
+                        <h3>BMW M5 Competition</h3>
+                        <p>High-performance luxury sedan with aggressive styling and unmatched driving dynamics. The ultimate expression of BMW's engineering excellence.</p>
+                        <button class="view-details-btn" onclick="showCarDetails()">View Details</button>
+                    </div>
+                </div>
+                <div class="car-card">
+                    <div class="car-image">
+                        <img src="img/Mercedes-Benz_logo.png" alt="Mercedes-AMG GT" />
+                    </div>
+                    <div class="car-info">
+                        <h3>Mercedes-AMG GT</h3>
+                        <p>Sports car with aggressive AMG styling and exceptional performance capabilities. Pure driving pleasure meets luxury craftsmanship.</p>
+                        <button class="view-details-btn" onclick="showCarDetails()">View Details</button>
+                    </div>
+                </div>
+                <div class="car-card">
+                    <div class="car-image">
+                        <img src="img/porsche_logo.png" alt="Porsche 911" />
+                    </div>
+                    <div class="car-info">
+                        <h3>Porsche 911</h3>
+                        <p>Iconic sports car with timeless design and pure driving pleasure. The benchmark for performance and precision engineering.</p>
+                        <button class="view-details-btn" onclick="showCarDetails()">View Details</button>
+                    </div>
+                </div>
+                <div class="car-card">
+                    <div class="car-image">
+                        <img src="img/BMW_logo.png" alt="BMW X7" />
+                    </div>
+                    <div class="car-info">
+                        <h3>BMW X7</h3>
+                        <p>Ultimate luxury SUV with commanding presence and sophisticated technology. The pinnacle of BMW's X family lineup.</p>
+                        <button class="view-details-btn" onclick="showCarDetails()">View Details</button>
+                    </div>
+                </div>
+                <div class="car-card">
+                    <div class="car-image">
+                        <img src="img/Mercedes-Benz_logo.png" alt="Mercedes S-Class" />
+                    </div>
+                    <div class="car-info">
+                        <h3>Mercedes S-Class</h3>
+                        <p>The world's most advanced luxury sedan with cutting-edge technology and unparalleled comfort. The standard of the world.</p>
+                        <button class="view-details-btn" onclick="showCarDetails()">View Details</button>
+                    </div>
+                </div>
+                <div class="car-card">
+                    <div class="car-image">
+                        <img src="img/porsche_logo.png" alt="Porsche Taycan" />
+                    </div>
+                    <div class="car-info">
+                        <h3>Porsche Taycan</h3>
+                        <p>Electric sports car with futuristic design and instant acceleration. The future of performance meets Porsche heritage.</p>
+                        <button class="view-details-btn" onclick="showCarDetails()">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Luxury Watches Section -->
+        <section id="luxury-watches" class="luxury-section">
+            <h2 class="section-title">Luxury Watches</h2>
+            <div class="watches-grid">
+                <div class="watch-card">
+                    <div class="watch-image">
+                        <img src="img/BMW_logo.png" alt="Rolex Submariner" />
+                    </div>
+                    <div class="watch-info">
+                        <h3>Rolex Submariner</h3>
+                        <p class="watch-price">$9,150</p>
+                        <p>Iconic diving watch with exceptional craftsmanship and timeless design. The ultimate symbol of luxury and precision.</p>
+                        <button class="more-info-btn" onclick="showWatchDetails()">More Info</button>
+                    </div>
+                </div>
+                <div class="watch-card">
+                    <div class="watch-image">
+                        <img src="img/Mercedes-Benz_logo.png" alt="Patek Philippe" />
+                    </div>
+                    <div class="watch-info">
+                        <h3>Patek Philippe</h3>
+                        <p class="watch-price">$32,000</p>
+                        <p>Ultra-luxury timepiece with intricate complications and heritage craftsmanship. You never actually own a Patek Philippe.</p>
+                        <button class="more-info-btn" onclick="showWatchDetails()">More Info</button>
+                    </div>
+                </div>
+                <div class="watch-card">
+                    <div class="watch-image">
+                        <img src="img/porsche_logo.png" alt="Audemars Piguet" />
+                    </div>
+                    <div class="watch-info">
+                        <h3>Audemars Piguet</h3>
+                        <p class="watch-price">$28,500</p>
+                        <p>Royal Oak collection featuring innovative design and mechanical excellence. The watch that changed the industry.</p>
+                        <button class="more-info-btn" onclick="showWatchDetails()">More Info</button>
+                    </div>
+                </div>
+                <div class="watch-card">
+                    <div class="watch-image">
+                        <img src="img/BMW_logo.png" alt="Omega Speedmaster" />
+                    </div>
+                    <div class="watch-info">
+                        <h3>Omega Speedmaster</h3>
+                        <p class="watch-price">$6,200</p>
+                        <p>The first watch worn on the moon. Legendary chronograph with exceptional precision and historical significance.</p>
+                        <button class="more-info-btn" onclick="showWatchDetails()">More Info</button>
+                    </div>
+                </div>
+                <div class="watch-card">
+                    <div class="watch-image">
+                        <img src="img/Mercedes-Benz_logo.png" alt="Cartier Santos" />
+                    </div>
+                    <div class="watch-info">
+                        <h3>Cartier Santos</h3>
+                        <p class="watch-price">$7,100</p>
+                        <p>Aviation-inspired timepiece with distinctive square case and elegant design. A true icon of luxury watchmaking.</p>
+                        <button class="more-info-btn" onclick="showWatchDetails()">More Info</button>
+                    </div>
+                </div>
+                <div class="watch-card">
+                    <div class="watch-image">
+                        <img src="img/porsche_logo.png" alt="IWC Portugieser" />
+                    </div>
+                    <div class="watch-info">
+                        <h3>IWC Portugieser</h3>
+                        <p class="watch-price">$12,800</p>
+                        <p>Maritime heritage meets modern luxury with sophisticated complications and elegant Portuguese design.</p>
+                        <button class="more-info-btn" onclick="showWatchDetails()">More Info</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Luxury Newsletter Section -->
+        <section id="luxury-newsletter" class="luxury-section">
+            <div class="newsletter-content">
+                <h2 class="newsletter-title">Join the Luxury Digest</h2>
+                <p class="newsletter-subtitle">Get weekly updates on cars, watches, and lifestyle. Stay informed about the latest trends, exclusive releases, and insider insights from the world of luxury.</p>
+                <form class="newsletter-form" id="newsletterForm">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-input" required>
+                            <option value="">Select Your Interests</option>
+                            <option value="cars">Luxury Cars</option>
+                            <option value="watches">Luxury Watches</option>
+                            <option value="lifestyle">Lifestyle</option>
+                            <option value="all">All Categories</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="subscribe-btn">Subscribe to Newsletter</button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Loading screen
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loading').classList.add('hidden');
+            }, 1000);
+        });
+
+        // Navigation functions
+        function showLuxuryCars() {
+            hideAllSections();
+            document.getElementById('luxury-cars').classList.add('active');
+            updateActiveNav('Luxury Cars');
+        }
+
+        function showLuxuryWatches() {
+            hideAllSections();
+            document.getElementById('luxury-watches').classList.add('active');
+            updateActiveNav('Luxury Watches');
+        }
+
+        function showLuxuryNewsletter() {
+            hideAllSections();
+            document.getElementById('luxury-newsletter').classList.add('active');
+            updateActiveNav('Luxury Newsletter');
+        }
+
+        function hideAllSections() {
+            const sections = ['luxury-cars', 'luxury-watches', 'luxury-newsletter'];
+            sections.forEach(sectionId => {
+                document.getElementById(sectionId).classList.remove('active');
+            });
+        }
+
+        function updateActiveNav(activeText) {
+            // Remove active class from all nav links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Add active class to clicked link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                if (link.textContent === activeText) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Detail functions
+        function showCarDetails() {
+            alert('Car details page coming soon! This will show comprehensive information about the selected luxury vehicle.');
+        }
+
+        function showWatchDetails() {
+            alert('Watch details page coming soon! This will display detailed specifications and history of the selected timepiece.');
+        }
+
+        // Form submission
+        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for subscribing to the Luxury Digest! You will receive weekly updates about the latest in luxury lifestyle.');
+        });
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Initialize with cars section
+        showLuxuryCars();
+    </script>
+</body>
+</html>
